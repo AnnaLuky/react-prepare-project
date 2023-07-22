@@ -51,4 +51,42 @@ table {
 h1 {
     font-size: 120%;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+   margin: 20px 0 0 60px;
 }
+
+.list-container {
+display: flex;
+flex-wrap: wrap;
+align-content: center;
+}
+.img-container {
+    width: 200px;
+    margin: 30px 10px 10px 10px;
+    background-color: rgb(245, 241, 241);
+    cursor: pointer;
+}
+ .img-title-container {
+    height: 50px;
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 90%;
+    overflow: hidden;
+ }
+ .img-artist {
+    margin-bottom: 3px;
+ }
+ .img-title {
+    color: gray;
+    text-overflow: ellipsis;
+    height: 2em;
+    overflow: hidden;
+ }
+ .pagination-container {
+    margin: 10px;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #3a7898;
+ }
+ .pagination-container a{
+    color: #053851;
+ }

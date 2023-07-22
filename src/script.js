@@ -27,16 +27,17 @@ const getListPage = (page = 1) => {
             const titleContainer = document.createElement("div");
             titleContainer.setAttribute("class", "img-title-container");
 
-
+            const artist = document.createElement("div");
+            artist.setAttribute("class", "img-artist");
+            artist.appendChild(document.createTextNode(imgObject.artist_title));
+            titleContainer.appendChild(artist);
+            
             const title = document.createElement("div");
             title.setAttribute("class", "img-title");
             title.appendChild(document.createTextNode(imgObject.title));
             titleContainer.appendChild(title);
 
-            const artist = document.createElement("div");
-            artist.setAttribute("class", "img-artist");
-            artist.appendChild(document.createTextNode(imgObject.artist_title));
-            titleContainer.appendChild(artist);
+
 
 
             imgContainer.appendChild(titleContainer);
