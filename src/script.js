@@ -31,7 +31,7 @@ const getListPage = (page = 1) => {
             artist.setAttribute("class", "img-artist");
             artist.appendChild(document.createTextNode(imgObject.artist_title));
             titleContainer.appendChild(artist);
-            
+
             const title = document.createElement("div");
             title.setAttribute("class", "img-title");
             title.appendChild(document.createTextNode(imgObject.title));
@@ -90,13 +90,20 @@ const getImagePage = (id, page) => {
         const details = object.data;
         const detailContainer = document.createElement("div");
         detailContainer.setAttribute("class", "detail-container");
-        const title = document.createElement("h2");
+
+
+        const author = document.createElement("h2");
+        author.innerHTML = details.artist_display.replace("\n", "<br>");
+        detailContainer.appendChild(author);
+
+        const title = document.createElement("h3");
         title.appendChild(document.createTextNode(details.title));
         detailContainer.appendChild(title);
 
-        const author = document.createElement("h3");
-        author.innerHTML = details.artist_display.replace("\n", "<br>");
-        detailContainer.appendChild(author);
+        const medium = document.createElement("p");
+        medium.setAttribute("class", "medium");
+        medium.appendChild(document.createTextNode(details.medium_display));
+        detailContainer.appendChild(medium);
 
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("class", "detail-image");
@@ -110,9 +117,7 @@ const getImagePage = (id, page) => {
         const infoContainer = document.createElement("div");
         infoContainer.setAttribute("class", "detail-description");
 
-        const medium = document.createElement("p");
-        medium.appendChild(document.createTextNode(details.medium_display));
-        infoContainer.appendChild(medium);
+
 
         if (details.provenance_text) {
             const paragraph = document.createElement("p");
@@ -143,10 +148,10 @@ const getList = (page = 1) => postJson("artworks/search", {
 })
     .then(results =>
         Promise.all(results.data.map(object => getJson(`artworks/${object.id}?fields=image_id,artist_title`).then(full_object => ({
-                ...object,
-                image_id: full_object.data.image_id,
-                artist_title: full_object.data.artist_title
-            })))
+            ...object,
+            image_id: full_object.data.image_id,
+            artist_title: full_object.data.artist_title
+        })))
         ).then(list => ({
             pagination: results.pagination,
             list
