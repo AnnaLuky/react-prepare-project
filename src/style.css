@@ -201,4 +201,10 @@ h1 {
 
 .detail-description {
     color: gray;
+    width: 800px;
+}
+
+.project-list {
+    margin: 20px;
+    color: #3a7898;
 }
